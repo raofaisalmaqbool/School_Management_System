@@ -15,8 +15,9 @@ class Teachers(models.Model):
     Name = models.CharField(max_length=50)
     Address= models.CharField(max_length=50)
     Email=models.EmailField(max_length=54)
-    Phone_No= models.CharField(max_length=11)
+    Phone_No= models.CharField(max_length=80)
 
-class Class(models.Model):
+class Claass(models.Model):
     ID = models.IntegerField(primary_key=True)
+    Name = models.CharField(max_length=50)
     
