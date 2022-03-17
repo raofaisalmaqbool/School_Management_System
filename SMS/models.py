@@ -1,5 +1,8 @@
+from distutils.command.upload import upload
 from email.headerregistry import Address
+import profile
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class Students(models.Model):
@@ -20,4 +23,7 @@ class Teachers(models.Model):
 class Claass(models.Model):
     ID = models.IntegerField(primary_key=True)
     Name = models.CharField(max_length=50)
+
+
+
     
