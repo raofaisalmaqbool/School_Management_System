@@ -24,8 +24,8 @@ from.import principal_views, teachers_views, students_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name="home"),
+    path('login/', views.index, name="home"),
     path('base/', views.base, name="base"),
-    path('login/', views.login, name="login"),
+    path('', views.login, name="login"),
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
