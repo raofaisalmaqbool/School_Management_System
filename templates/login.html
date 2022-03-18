@@ -24,6 +24,18 @@
                      <div class="login-right-wrap">
                         <h1>Login</h1>
                         <p class="account-subtitle">Access to our dashboard</p>
+                        {% if messages %}
+                           {% for message in messages %}
+                              {% if message.tags == 'error' %}
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                           {{message}}
+                           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                           </button>
+                         </div>
+                              {% endif %}
+                           {% endfor %}
+                         {% endif %}
                         <form action="{% url 'doLogin' %}" method="post">
                            {% csrf_token %}
                            <div class="form-group">

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse
 from SMS.emailbackend import EmailBackend
 from django.contrib.auth import authenticate, login as logino, logout
+from django.contrib import messages
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -26,8 +27,8 @@ def doLogin(request):
            elif user_type == '3':
                return HttpResponse('This is Student Panel')
            else:
-               #messages.error(request,'Email and Password Are Invalid !')
+               messages.error(request,'Email or Password are Invalid !')
                return redirect('login')
        else:
-           #messages.error(request,'Email and Password Are Invalid !')
+           messages.error(request,'Email or Password are Invalid !')
            return redirect('login')
