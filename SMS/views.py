@@ -21,11 +21,11 @@ def doLogin(request):
            logino(request,user)
            user_type = user.user_type
            if user_type == '1':
-               return HttpResponse('This is Hod Panel')
+               return HttpResponse('This is Principal Panel')
            elif user_type == '2':
-               return HttpResponse('This is Staff Panel')
+               return HttpResponse('This is Teachers Panel')
            elif user_type == '3':
-               return HttpResponse('This is Student Panel')
+               return HttpResponse('This is Students Panel')
            else:
                messages.error(request,'Email or Password are Invalid !')
                return redirect('login')
