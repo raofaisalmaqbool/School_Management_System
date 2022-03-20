@@ -96,6 +96,7 @@
             <a class="dropdown-item" href="inbox.html" style="color:red; padding: -15px; margin: -25px;">Inbox</a>
             <a class="dropdown-item" href="{% url 'logout' %}" style="color:red; padding: -15px; margin: -25px;">Logout</a>
       </li>
+      
          <div class="dropdown-menu">
             <div class="user-header">
                <div class="avatar avatar-sm">
@@ -111,8 +112,10 @@
                   <p class="text-muted mb-0">Student</p>
                   {% endif %}
                </div>
+               
             </div>
             <div>
+               
             <a class="dropdown-item" href="profile.html">My Profile</a>
             <a class="dropdown-item" href="inbox.html">Inbox</a>
             <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
