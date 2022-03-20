@@ -14,7 +14,7 @@ def login(request):
 
 def doLogout(request):
     logout(request)
-    return render('login')
+    return render(request, 'login.html')
 
 def doLogin(request):
     if request.method == "POST":
