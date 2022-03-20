@@ -36,3 +36,6 @@ def doLogin(request):
        else:
            messages.error(request,'Email or Password are Invalid !')
            return redirect('login')
+
+def profile(request):
+    return render(request, 'profile.html')

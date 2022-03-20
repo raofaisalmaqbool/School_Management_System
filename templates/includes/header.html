@@ -92,7 +92,7 @@
          <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
          <span class="user-img"><img class="rounded-circle" src="{% static 'assets/img/profiles/avatar-01.jpg' %}" width="31" alt="Ryan Taylor"></span>
          </a>
-         <a class="dropdown-item" href="profile.html" style="color:red; padding: -15px; margin: -25px;">My Profile</a>
+         <a class="dropdown-item" href="{% url 'profile' %}" style="color:red; padding: -15px; margin: -25px;">My Profile</a>
             <a class="dropdown-item" href="inbox.html" style="color:red; padding: -15px; margin: -25px;">Inbox</a>
             <a class="dropdown-item" href="{% url 'logout' %}" style="color:red; padding: -15px; margin: -25px;">Logout</a>
       </li>
@@ -116,7 +116,7 @@
             </div>
             <div>
                
-            <a class="dropdown-item" href="profile.html">My Profile</a>
+            <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
             <a class="dropdown-item" href="inbox.html">Inbox</a>
             <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
             </div>

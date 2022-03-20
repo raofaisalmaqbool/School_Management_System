@@ -24,11 +24,12 @@ from.import principal_views, teachers_views, students_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/', views.index, name="home"),
-    path('base/', views.base, name="base"),
+    path('index/', views.index, name='home'),
+    path('base/', views.base, name='base'),
     path('', views.login, name='login'),
     path('doLogin/', views.doLogin, name='doLogin'),
     path('doLogout/', views.doLogout, name='logout'),
+    path('profile/', views.profile, name="profile"),
     path('principal/principal_home/', principal_views.principal_home, name='principal_home'),  #principal home page
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
