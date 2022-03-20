@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, HttpResponse
 from SMS.emailbackend import EmailBackend
 from django.contrib.auth import authenticate, login as logino, logout
 from django.contrib import messages
+from SMS.models import Customuser
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -38,4 +39,8 @@ def doLogin(request):
            return redirect('login')
 
 def profile(request):
-    return render(request, 'profile.html')
+    user = Customuser.objects.get(id = request.user.id)
+    context ={
+        "user" : user
+    }
+    return render(request, 'profile.html', context)
