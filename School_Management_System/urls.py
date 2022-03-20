@@ -31,5 +31,7 @@ urlpatterns = [
     path('doLogout/', views.doLogout, name='logout'),
     path('profile/', views.profile, name="profile"),
     path('principal/principal_home/', principal_views.principal_home, name='principal_home'),  #principal home page
+    path('profile/update', views.profile_update, name='profile_update'),
+    #path('Profile/update',views.PROFILE_UPDATE,name='profile_update'),
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
