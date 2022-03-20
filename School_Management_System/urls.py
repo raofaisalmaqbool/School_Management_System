@@ -27,7 +27,8 @@ urlpatterns = [
     path('index/', views.index, name="home"),
     path('base/', views.base, name="base"),
     path('', views.login, name='login'),
-    path('doLogin', views.doLogin, name='doLogin'),
-    path('principal/home', principal_views.home, name='home'),  #principal home page
+    path('doLogin/', views.doLogin, name='doLogin'),
+    path('doLogout/', views.doLogout, name='logout'),
+    path('principal/principal_home/', principal_views.principal_home, name='principal_home'),  #principal home page
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

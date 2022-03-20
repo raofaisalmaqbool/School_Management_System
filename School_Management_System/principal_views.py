@@ -1,4 +1,7 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
-def home(request):
-    return render(request, 'principal/home.html')
+@login_required(login_url='/')
+
+def principal_home(request):
+    return render(request, 'principal/principal_home.html')

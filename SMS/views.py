@@ -12,6 +12,10 @@ def base(request):
 def login(request):
     return render(request, 'login.html')
 
+def doLogout(request):
+    logout(request)
+    return render('login')
+
 def doLogin(request):
     if request.method == "POST":
        user = EmailBackend.authenticate(request,
@@ -21,7 +25,7 @@ def doLogin(request):
            logino(request,user)
            user_type = user.user_type
            if user_type == '1':
-               return HttpResponse('This is Principal Panel')
+               return redirect('principal_home')
            elif user_type == '2':
                return HttpResponse('This is Teachers Panel')
            elif user_type == '3':
