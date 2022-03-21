@@ -44,8 +44,11 @@ class Session_Year(models.Model):
     session_start = models.CharField(max_length=80)
     session_end = models.CharField(max_length=80)
 
+    def __str__(self):
+        return self.session_start + " To " + self.session_end
 
-class Students(models.Model):
+
+class Student(models.Model):
     admin = models.OneToOneField(Customuser,on_delete=models.CASCADE)
     address = models.TextField()
     gender = models.CharField(max_length=100)
