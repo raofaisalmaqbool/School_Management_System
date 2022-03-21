@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from SMS.models import Course, Customuser, Session_Year, Student 
 from django.contrib import messages
+from SMS.models import Student
 
 @login_required(login_url='/')
 def principal_home(request):
@@ -65,3 +66,12 @@ def add_student(request):
 @login_required(login_url='/')
 def view_student(request):
     return render(request,'principal/view_student.html')
+
+@login_required(login_url='/')
+def view_student(request):
+    student = Student.objects.all()
+
+    context = {
+        'student':student,
+    }
+    return render(request,'principal/view_student.html',context)
