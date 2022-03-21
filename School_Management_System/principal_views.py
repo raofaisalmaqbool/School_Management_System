@@ -158,6 +158,6 @@ def add_course(request):
         messages.success(request,'Course Are Successfully Created ')
 
         
-        return redirect('view_course')
+        return redirect('add_course')
 
     return render(request,'principal/add_course.html')
