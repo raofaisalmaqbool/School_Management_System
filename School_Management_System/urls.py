@@ -35,6 +35,7 @@ urlpatterns = [
     #path('Profile/update',views.PROFILE_UPDATE,name='profile_update'),
     #path('Hod/Student/Add',Hod_Views.ADD_STUDENT,name='add_student'),
     path('principal/student/add',principal_views.add_student, name='add_student'),
+    path('principal/student/view',principal_views.view_student,name='view_student'),
 
 
 

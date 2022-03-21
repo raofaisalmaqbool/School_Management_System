@@ -61,3 +61,7 @@ def add_student(request):
         'session_year':session_year,
     }
     return render(request,'principal/add_student.html', context)
+
+@login_required(login_url='/')
+def view_student(request):
+    return render(request,'principal/view_student.html')
