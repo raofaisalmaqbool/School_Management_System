@@ -136,3 +136,10 @@ def update_student(request):
     return render(request,'principal/edit_student.html')
 #34 update student (Backend).txt
  #34 update student (Backend).txt.
+
+@login_required(login_url='/')
+def delete_student(request,admin):
+    student = Customuser.objects.get(id = admin)
+    student.delete()
+    messages.success(request,'Record Are Successfully Deleted !')
+    return redirect('view_student')

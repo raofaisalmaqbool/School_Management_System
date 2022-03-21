@@ -8,7 +8,7 @@
                            <form method="post" action="{% url 'update_student' %}" enctype="multipart/form-data">
                               {% csrf_token %}
                                  <div class="col-9">
-                                    <h5 class="form-title"><span>Edit Student</span></h5>
+                                    <h5 class="form-title"><span>Update Student</span></h5>
                                  </div>
 
                                  {% include 'includes/messages.html' %}
@@ -88,7 +88,7 @@
                                  </div>
                                <br>
                                  <div class="col-12">
-                                    <button type="submit" class="btn btn-primary">Edit Student</button>
+                                    <button type="submit" class="btn btn-primary">Update Student</button>
                                  </div>
 
                            </form>
