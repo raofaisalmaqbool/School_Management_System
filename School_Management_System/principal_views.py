@@ -161,3 +161,12 @@ def add_course(request):
         return redirect('add_course')
 
     return render(request,'principal/add_course.html')
+
+
+@login_required(login_url='/')
+def view_course(request):
+    course = Course.objects.all()
+    context = {
+        'course':course,
+    }
+    return render(request,'principal/view_course.html',context)
