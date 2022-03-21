@@ -33,5 +33,9 @@ urlpatterns = [
     path('principal/principal_home/', principal_views.principal_home, name='principal_home'),  #principal home page
     path('profile/update', views.profile_update, name='profile_update'),
     #path('Profile/update',views.PROFILE_UPDATE,name='profile_update'),
+    #path('Hod/Student/Add',Hod_Views.ADD_STUDENT,name='add_student'),
+    path('principal/student/add',principal_views.add_student, name='add_student'),
+
+
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
