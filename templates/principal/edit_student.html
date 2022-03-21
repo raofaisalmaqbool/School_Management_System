@@ -5,7 +5,7 @@
                      <div class="card">
                         <div class="card-body">
                            
-                           <form method="post" action="{% url 'add_student' %}" enctype="multipart/form-data">
+                           <form method="post" action="{% url 'update_student' %}" enctype="multipart/form-data">
                               {% csrf_token %}
                                  <div class="col-9">
                                     <h5 class="form-title"><span>Edit Student</span></h5>
