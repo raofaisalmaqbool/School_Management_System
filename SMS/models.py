@@ -8,12 +8,6 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
-class Students(models.Model):
-    ID = models.IntegerField(primary_key=True)
-    Name = models.CharField(max_length=50)
-    Father_Name= models.CharField(max_length=50)
-    Address=models.CharField(max_length=80)
-    Phone_No= models.CharField(max_length=11)
 
 
 class Teachers(models.Model):
@@ -50,6 +44,15 @@ class Session_Year(models.Model):
     session_start = models.CharField(max_length=80)
     session_end = models.CharField(max_length=80)
 
-    
 
-    
+class Students(models.Model):
+    admin = models.OneToOneField(Customuser,on_delete=models.CASCADE)
+    address = models.TextField()
+    gender = models.CharField(max_length=100)
+    course_id = models.ForeignKey(Course,on_delete=models.DO_NOTHING)
+    session_year_id = models.ForeignKey(Session_Year,on_delete=models.DO_NOTHING)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.admin.first_name + " " + self.admin.last_name
