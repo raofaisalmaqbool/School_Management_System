@@ -59,3 +59,13 @@ class Student(models.Model):
 
     def __str__(self):
         return self.admin.first_name + " " + self.admin.last_name
+
+class Teacher(models.Model):
+    admin = models.OneToOneField(Customuser, on_delete=models.CASCADE)
+    address = models.TextField()
+    gender = models.CharField(max_length=9)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.admin.username
