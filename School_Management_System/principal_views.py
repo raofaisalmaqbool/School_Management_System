@@ -1,5 +1,6 @@
 from email import message
 from http.client import HTTPResponse
+from urllib import request
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from SMS.models import Course, Customuser, Session_Year, Student, Teacher 
@@ -248,3 +249,11 @@ def view_teacher(request):
         'teacher' : teacher
     }
     return render(request, 'principal/view_teacher.html', context)
+
+
+def edit_teacher(request, id):
+    teacher = Teacher.objects.get(id=id)
+    context ={
+        'teacher':teacher
+    }
+    return render(request, "principal/edit_teacher.html", context)

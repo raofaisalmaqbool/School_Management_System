@@ -49,6 +49,7 @@ urlpatterns = [
 
     path('principal/teacher/add',principal_views.add_teacher, name='add_teacher'),
     path('principal/teacher/view',principal_views.view_teacher, name='view_teacher'),
+    path('principal/teacher/edit/<str:id>',principal_views.edit_teacher, name='edit_teacher'),
 
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
