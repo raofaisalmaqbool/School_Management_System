@@ -185,10 +185,16 @@ def update_course(request):
         name = request.POST.get('name')# form ky ander course name ko bhaja tha name ky title sy osko yahan per get kiya ha
         course_id = request.POST.get('course_id')# or course id bhaji thi edit_course ma wo get krwai
 
-        course = Course.objects.get(id = course_id) #models ma sary course object ki id mil jay gi issy
-        course.name = name
+        course = Course.objects.get(id = course_id) #models ma say course object ki id mil jay gi issy
+        course.name = name  # for course name change
         course.save()
         messages.success(request, 'Course Updated Successfully!')
         return redirect('view_course')
 
     return render(request, 'principal/edit_course.html')
+
+def delete_course(request, id):
+    course = Course.objects.get(id=id)    # ya model ki id laye ga
+    course.delete()        # will delete the course
+    messages.success(request,'Course is deleted!')
+    return redirect('view_course')

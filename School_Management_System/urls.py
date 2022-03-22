@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
 from xml.dom.minidom import Document
 from django.contrib import admin
 from django.urls import path
@@ -24,16 +25,15 @@ from.import principal_views, teachers_views, students_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.login, name='login'),
     path('index/', views.index, name='home'),
     path('base/', views.base, name='base'),
-    path('', views.login, name='login'),
     path('doLogin/', views.doLogin, name='doLogin'),
     path('doLogout/', views.doLogout, name='logout'),
     path('profile/', views.profile, name="profile"),
-    path('principal/principal_home/', principal_views.principal_home, name='principal_home'),  #principal home page
     path('profile/update', views.profile_update, name='profile_update'),
-    #path('Profile/update',views.PROFILE_UPDATE,name='profile_update'),
-    #path('Hod/Student/Add',Hod_Views.ADD_STUDENT,name='add_student'),
+
+    path('principal/principal_home/', principal_views.principal_home, name='principal_home'),  #principal home page
     path('principal/student/add',principal_views.add_student, name='add_student'),
     path('principal/student/view',principal_views.view_student,name='view_student'),
     path('principal/student/edit/<str:id>',principal_views.edit_student,name='edit_student'),
@@ -43,7 +43,7 @@ urlpatterns = [
     path('principal/course/view',principal_views.view_course,name='view_course'),
     path('principal/course/edit/<str:id>',principal_views.edit_course,name='edit_course'),
     path('principal/course/update',principal_views.update_course,name='update_course'),
-
+    path('principal/course/delete/<str:id>',principal_views.delete_course,name='delete_course'),
 
 
 
