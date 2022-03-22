@@ -1,4 +1,5 @@
 from email import message
+from http.client import HTTPResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from SMS.models import Course, Customuser, Session_Year, Student 
@@ -198,3 +199,7 @@ def delete_course(request, id):
     course.delete()        # will delete the course
     messages.success(request,'Course is deleted!')
     return redirect('view_course')
+
+
+def add_teacher(request):
+    return render(request, "principal/add_teacher.html")

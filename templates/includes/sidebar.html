@@ -21,10 +21,10 @@
             <li class="submenu">
                <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Teachers</span> <span class="menu-arrow"></span></a>
                <ul>
+
+                  <li><a href="{% url 'add_teacher' %}">Add Teacher</a></li>
+                  <li><a href="teacher-details.html">View Teacher</a></li>
                   
-                  <li><a href="teacher-details.html">Teacher View</a></li>
-                  <li><a href="add-teacher.html">Teacher Add</a></li>
-                  <li><a href="edit-teacher.html">Teacher Edit</a></li>
                </ul>
             </li>
             <li class="submenu">
@@ -32,7 +32,7 @@
                <ul>
                   <li><a href="{% url 'add_course' %}">Add Course</a></li>
                   <li><a href="{% url 'view_course' %}">View Course</a></li>
-                  <li><a href="edit-department.html">Edit Courses</a></li>
+                  
                </ul>
             </li>
             <li class="submenu">

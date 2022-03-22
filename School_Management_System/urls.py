@@ -34,17 +34,20 @@ urlpatterns = [
     path('profile/update', views.profile_update, name='profile_update'),
 
     path('principal/principal_home/', principal_views.principal_home, name='principal_home'),  #principal home page
+    
     path('principal/student/add',principal_views.add_student, name='add_student'),
     path('principal/student/view',principal_views.view_student,name='view_student'),
     path('principal/student/edit/<str:id>',principal_views.edit_student,name='edit_student'),
     path('principal/student/update',principal_views.update_student,name='update_student'),
     path('principal/student/delete/<str:admin>',principal_views.delete_student,name='delete_student'),
+    
     path('principal/course/add',principal_views.add_course,name='add_course'),
     path('principal/course/view',principal_views.view_course,name='view_course'),
     path('principal/course/edit/<str:id>',principal_views.edit_course,name='edit_course'),
     path('principal/course/update',principal_views.update_course,name='update_course'),
     path('principal/course/delete/<str:id>',principal_views.delete_course,name='delete_course'),
 
+    path('principal/teacher/add',principal_views.add_teacher, name='add_teacher'),
 
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
