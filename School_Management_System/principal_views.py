@@ -241,3 +241,10 @@ def add_teacher(request):
             return redirect('add_teacher')
 
     return render(request, "principal/add_teacher.html")
+
+def view_teacher(request):
+    teacher = Teacher.objects.all()
+    context ={
+        'teacher' : teacher
+    }
+    return render(request, 'principal/view_teacher.html', context)

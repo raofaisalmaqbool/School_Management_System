@@ -48,6 +48,7 @@ urlpatterns = [
     path('principal/course/delete/<str:id>',principal_views.delete_course,name='delete_course'),
 
     path('principal/teacher/add',principal_views.add_teacher, name='add_teacher'),
+    path('principal/teacher/view',principal_views.view_teacher, name='view_teacher'),
 
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
