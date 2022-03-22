@@ -41,6 +41,8 @@ urlpatterns = [
     path('principal/student/delete/<str:admin>',principal_views.delete_student,name='delete_student'),
     path('principal/course/add',principal_views.add_course,name='add_course'),
     path('principal/course/view',principal_views.view_course,name='view_course'),
+    path('principal/course/edit/<str:id>',principal_views.edit_course,name='edit_course'),
+    path('principal/course/update',principal_views.update_course,name='update_course'),
 
 
 
