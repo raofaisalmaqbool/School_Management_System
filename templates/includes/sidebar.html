@@ -3,6 +3,7 @@
 <div class="sidebar" id="sidebar">
    <div class="sidebar-inner slimscroll">
       <div id="sidebar-menu" class="sidebar-menu">
+         {% if user.user_type == '1' %}
          <ul>
             {% comment %}<li class="menu-title">
                <span>Main Menu</span>
@@ -91,6 +92,44 @@
             </li>
             
          </ul>
+         
+         {% elif user.user_type == '2' %}
+         <ul>
+            {% comment %}<li class="menu-title">
+               <span>Main Menu</span>
+            </li>{% endcomment %}
+            <li class = "{% active_link 'principal_home' 'active' %}">
+                  <a href="{% url 'principal_home' %}"><i class="fas fa-holly-berry"></i> <span>Dashboard</span></a>
+            </li>
+            <li class = "{% active_link 'principal_home' 'active' %}">
+               <a href="{% url 'principal_home' %}"><i class="fas fa-holly-berry"></i> <span>Take Attendens</span></a>
+            </li>
+            <li class = "{% active_link 'principal_home' 'active' %}">
+               <a href="{% url 'principal_home' %}"><i class="fas fa-holly-berry"></i> <span>View/Update Attendens</span></a>
+            </li>
+            <li class = "{% active_link 'principal_home' 'active' %}">
+               <a href="{% url 'principal_home' %}"><i class="fas fa-holly-berry"></i> <span>Add Result</span></a>
+            </li>
+            <li class = "{% active_link 'principal_home' 'active' %}">
+               <a href="{% url 'principal_home' %}"><i class="fas fa-holly-berry"></i> <span>Apply For Leave</span></a>
+            </li>
+            <li class = "{% active_link 'principal_home' 'active' %}">
+               <a href="{% url 'principal_home' %}"><i class="fas fa-holly-berry"></i> <span>Send Feedback</span></a>
+            </li>
+            <li>
+               <a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i> <span>Logout</span></a>
+               
+            </li>
+
+
+
+         </ul>
+
+         {% else %}
+
+         {% endif %}
+
+
       </div>
    </div>
 </div>

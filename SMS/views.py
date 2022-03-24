@@ -29,7 +29,7 @@ def doLogin(request):
            if user_type == '1':
                return redirect('principal_home')
            elif user_type == '2':
-               return HttpResponse('This is Teachers Panel')
+               return redirect('teacher_home')
            elif user_type == '3':
                return HttpResponse('This is Students Panel')
            else:
