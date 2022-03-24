@@ -9,7 +9,17 @@ from SMS.models import Student
 
 @login_required(login_url='/')
 def principal_home(request):
-    return render(request, 'principal/principal_home.html')
+    teacher_count = Teacher.objects.all().count() # they will return total no of teachre, studnt ,courses
+    student_count = Student.objects.all().count()
+    course_count = Course.objects.all().count()
+
+    context ={
+        'teacher_count' : teacher_count,
+        'student_count' : student_count,
+        'course_count' : course_count
+    }
+
+    return render(request, 'principal/principal_home.html', context)
 
 @login_required(login_url='/')
 def add_student(request):
