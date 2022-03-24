@@ -257,3 +257,10 @@ def edit_teacher(request, id):
         'teacher':teacher
     }
     return render(request, "principal/edit_teacher.html", context)
+
+def delete_teacher(request, admin):
+    teacher = Customuser.objects.get(id = admin)
+    teacher.delete()
+    messages.success(request, 'Record Successfully!')
+    #return render(request, 'principal/view_teacher.html')
+    return redirect('view_teacher')
