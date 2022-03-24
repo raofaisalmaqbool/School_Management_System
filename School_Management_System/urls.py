@@ -20,7 +20,7 @@ from django.urls import path
 from SMS import views
 from django.conf import settings
 from django.conf.urls.static import static
-from.import principal_views, teachers_views, students_views
+from.import principal_views, teacher_views, students_views
 
 
 urlpatterns = [
@@ -51,6 +51,8 @@ urlpatterns = [
     path('principal/teacher/view',principal_views.view_teacher, name='view_teacher'),
     path('principal/teacher/edit/<str:id>',principal_views.edit_teacher, name='edit_teacher'),
     path('principal/teacher/delete/<str:admin>',principal_views.delete_teacher,name='delete_teacher'),
+
+    path('teacher/home', teacher_views.teacher_home, name='teacher_home'),
 
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
