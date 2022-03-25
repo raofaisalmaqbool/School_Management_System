@@ -278,5 +278,9 @@ def delete_teacher(request, admin):
 
 
 def teacher_send_notifiction(request):
-    return render(request, 'principal/teacher_notification.html')
+    teacher = Teacher.objects.all()
+    context ={
+        'teacher' : teacher
+    }
+    return render(request, 'principal/teacher_notification.html', context)
     
