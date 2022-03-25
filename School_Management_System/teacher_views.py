@@ -21,3 +21,7 @@ def status_mark(request, status):
     return redirect('notifications_tec')
 
 
+def teacher_leave_apply(request):
+    return render(request, 'teacher/teacher_leave_apply.html')
+
+
