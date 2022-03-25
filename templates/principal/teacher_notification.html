@@ -56,7 +56,7 @@
                             
                             <td class="text-right">
                                <!-- Button trigger modal -->
-                              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#send_notification-{{forloop.counter}}">
+                              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#send_notification">
                                  Send Notifications
                               </button>
                             </td>
@@ -94,7 +94,7 @@
 
   <!-- Modal -->
   {% for i in teacher %}
-<div class="modal fade" id="send_notification-{{forloop.counter}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="send_notification" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -104,10 +104,12 @@
           </button>
         </div>
         <div class="modal-body">
-          <form>
+          <form method="post" action="{% url 'teacher_send_notifiction' %}">
+             {% csrf_token %}
             <div class="form-group">
               
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Notification">
+              <input type="text" class="form-control" name="message">
+              <input type="text" class="form-control" name="teacher_id" value={{i.admin.id}}>
                
               
             </div>

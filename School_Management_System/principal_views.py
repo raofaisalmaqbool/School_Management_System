@@ -3,7 +3,7 @@ from http.client import HTTPResponse
 from urllib import request
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from SMS.models import Course, Customuser, Session_Year, Student, Teacher 
+from SMS.models import Course, Customuser, Session_Year, Student, Teacher, Send_Notification
 from django.contrib import messages
 from SMS.models import Student
 
@@ -283,4 +283,19 @@ def teacher_send_notifiction(request):
         'teacher' : teacher
     }
     return render(request, 'principal/teacher_notification.html', context)
+
+
+def save_teacher_notification(request):
+    if request.method == "POST":
+        teacher_id = request.POST.get('teacher_id')
+        message = request.POST.get('message')
+
+        teacher = Teacher.objects.all()
+        notifcation = Send_Notification(
+            teacher_id = teacher,
+            message = message,
+
+        )
+        notifcation.save()
+    return redirect('teacher_send_notifiction')
     
