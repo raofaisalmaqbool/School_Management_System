@@ -274,3 +274,7 @@ def delete_teacher(request, admin):
     messages.success(request, 'Record Successfully!')
     #return render(request, 'principal/view_teacher.html')
     return redirect('view_teacher')
+
+
+
+#def teacher_send_notifiction(request):
