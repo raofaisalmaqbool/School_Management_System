@@ -3,10 +3,10 @@ from http.client import HTTPResponse
 from urllib import request
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from SMS.models import Course, Customuser, Session_Year, Student, Teacher, Send_Notification
+from SMS.models import Course, Customuser, Session_Year, Student, Teacher, Teacher_Notification
 from django.contrib import messages
 from SMS.models import Student
-
+  
 @login_required(login_url='/')
 def principal_home(request):
     teacher_count = Teacher.objects.all().count() # they will return total no of teachre, studnt ,courses
@@ -290,8 +290,10 @@ def save_teacher_notification(request):
         teacher_id = request.POST.get('teacher_id')
         message = request.POST.get('message')
 
-        teacher = Teacher.objects.all()
-        notifcation = Send_Notification(
+        #print(teacher_id, message)
+
+        teacher = Teacher.objects.get(admin = teacher_id)
+        notifcation = Teacher_Notification(
             teacher_id = teacher,
             message = message,
 

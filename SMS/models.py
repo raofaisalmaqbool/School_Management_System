@@ -71,7 +71,7 @@ class Teacher(models.Model):
     def __str__(self):
         return self.admin.username
 
-class Send_Notification(models.Model):
+class Teacher_Notification(models.Model):
     teacher_id = models.ForeignKey(Teacher, on_delete=models.CASCADE)
     message = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
