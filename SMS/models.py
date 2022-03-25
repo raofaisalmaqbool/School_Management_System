@@ -1,4 +1,5 @@
 from distutils.command.upload import upload
+from email import message
 from email.headerregistry import Address
 import profile
 from turtle import update
@@ -69,3 +70,11 @@ class Teacher(models.Model):
 
     def __str__(self):
         return self.admin.username
+
+class Send_Notification(models.Model):
+    teacher_id = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    message = models.CharField(max_length=200)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.teacher_id.admin.first_name

@@ -277,4 +277,6 @@ def delete_teacher(request, admin):
 
 
 
-#def teacher_send_notifiction(request):
+def teacher_send_notifiction(request):
+    return render(request, 'principal/teacher_notification.html')
+    
