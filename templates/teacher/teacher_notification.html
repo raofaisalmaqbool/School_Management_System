@@ -34,13 +34,19 @@
                         </tr>
                      </thead>
                      <tbody>
-                        {% for i in course %}
+                        {% for i in notifications_tec %}
                         <tr>
-                           <td>hfkjdhfkh</td>
+                           <td>{{i.message}}</td>
                            
                            <td class="text-right">
                               <div class="actions">
-                                 
+                                  <!----   button enable and disable    ------>
+                                 {% if i.status == 0 %}
+                                 <a href="{% url 'status_mark' status=i.id %}" class = "btn btn-danger"> Mark as Done</a>
+                                 {% else %}
+                                 <button class = "btn btn-danger" disable="disable"> Mark as Done</button>
+
+                                 {% endif %}
                               </div>
                            </td>
                         </tr>
