@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<center>
+<div class="content container-fluid" style="margin-top:90px">
+   <div class="page-header">
+      <div class="row align-items-center">
+         <div class="col">
+            <h3 class="page-title">Notification</h3>
+            <ul class="breadcrumb">
+               <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+               <li class="breadcrumb-item active">Notification</li>
+            </ul>
+         </div>
+         <div class="col-auto text-right float-right ml-auto">
+            <a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
+            <a href="add-student.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+         </div>
+      </div>
+   </div>
+   {% include 'includes/messages.html' %}
+ 
+      <div class="col-sm-8">
+         <div class="card card-table">
+            <div class="card-body">
+               <div class="table-responsive">
+                  <table id="table_id" class="table table-hover table-center mb-0">
+                     <thead>
+                        <tr>
+                           
+                           <th>Messages</th>
+                           
+                           <th class="text-right">Action</th>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        {% for i in course %}
+                        <tr>
+                           <td>hfkjdhfkh</td>
+                           
+                           <td class="text-right">
+                              <div class="actions">
+                                 
+                              </div>
+                           </td>
+                        </tr>
+                        {% endfor %}
+                     </tbody>
+                  </table>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+
+</center>
+{% endblock %}	
+	

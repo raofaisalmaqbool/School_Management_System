@@ -55,6 +55,7 @@ urlpatterns = [
     path('principal/teacher/save_notification', principal_views.save_teacher_notification, name='save_teacher_notification'),
 
     path('teacher/home', teacher_views.teacher_home, name='teacher_home'),
+    path('teacher/notifications', teacher_views.notifications_tec, name='notifications_tec'),
 
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

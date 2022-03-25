@@ -279,8 +279,10 @@ def delete_teacher(request, admin):
 
 def teacher_send_notifiction(request):
     teacher = Teacher.objects.all()
+    see_notification = Teacher_Notification.objects.all().order_by('-id')
     context ={
-        'teacher' : teacher
+        'teacher' : teacher,
+        'see_notification' : see_notification,
     }
     return render(request, 'principal/teacher_notification.html', context)
 
@@ -299,5 +301,6 @@ def save_teacher_notification(request):
 
         )
         notifcation.save()
+        messages.success(request, 'Your Notification Success Send')
     return redirect('teacher_send_notifiction')
     
