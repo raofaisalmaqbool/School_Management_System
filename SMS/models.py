@@ -90,4 +90,4 @@ class Teacher_leave(models.Model):
     update_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.teacher_id.admin.first_name + self.staff_id.admin.last_name
+        return self.teacher_id.admin.first_name + self.teacher_id.admin.last_name

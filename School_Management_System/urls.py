@@ -57,7 +57,9 @@ urlpatterns = [
     path('teacher/home', teacher_views.teacher_home, name='teacher_home'),
     path('teacher/notifications', teacher_views.notifications_tec, name='notifications_tec'),
     path('teacher/status_mark/<str:status>', teacher_views.status_mark, name='status_mark'),
+
     path('teacher/teacher_leave_apply', teacher_views.teacher_leave_apply, name='teacher_leave_apply'),
+    path('teacher/teacher_leave_save', teacher_views.teacher_leave_save, name='teacher_leave_save'),
 
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

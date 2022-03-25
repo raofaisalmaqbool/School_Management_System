@@ -18,9 +18,10 @@
                </div>
             </div>
          </div>
+         
           <div class="card">
              <div class="card-body">
-                <form method="post" action="{% url 'teacher_leave_apply' %}" >
+                <form method="post" action="{% url 'teacher_leave_save' %}" >
                    {% csrf_token %}
                    <div class="col-8">
                       <h5 class="form-title"><span>Appy For Leave</span></h5>
@@ -29,14 +30,14 @@
                    <div class="col-sm-6">
                       <div class="form-group">
                          <label>Date of Leave</label>
-                         <input type="date" class="form-control" name="name" value="{{course.name}}" required>
-                         <input type="text" class="form-control" name="course_id" value="{{course.id}}" hidden>
+                         <input type="date" class="form-control" name="leave_date" required>
+                         <input type="text" class="form-control" name="leave_id" hidden>
                       </div>
                    </div>
                    <div class="col-sm-6">
                     <div class="form-group">
                        <label>Leave Message</label>
-                       <textarea type="text" class="form-control" name="name" required></textarea>
+                       <textarea type="text" class="form-control" name="leave_message" required></textarea>
                      
                     </div>
                  </div>
