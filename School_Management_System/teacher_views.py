@@ -24,7 +24,16 @@ def status_mark(request, status):
 
 
 def teacher_leave_apply(request):
-    return render(request, 'teacher/teacher_leave_apply.html')
+    teacher = Teacher.objects.filter(admin = request.user.id)
+    for i in teacher:
+        teacher_id = i.id
+        teacher_leave_history = Teacher_leave.objects.filter(teacher_id=teacher_id)
+        context = {
+            'teacher_leave_history':teacher_leave_history
+        }
+        return render(request, 'teacher/teacher_leave_apply.html', context)
+
+    
 
 def teacher_leave_save(request):
     if request.method == "POST":
