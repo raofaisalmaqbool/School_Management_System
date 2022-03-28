@@ -45,8 +45,8 @@
                            <td class="text-right">
                               <div class="actions">
                                  {% if i.status == 0 %}
-                                 <a href="{% url 'teacher_leave_approve' i.id %}" class="btn btn-success"> Approve </a>
-                                 <a href="{% url 'teacher_leave_disapprove' i.id %}" class="btn btn-danger"> Disapprove </a>
+                                 <a href="{% url 'student_leave_approve' i.id %}" class="btn btn-success"> Approve </a>
+                                 <a href="{% url 'student_leave_disapprove' i.id %}" class="btn btn-danger"> Disapprove </a>
 
                                  {% elif i.status == 1 %}
                                  <button class="btn btn-success" disabled="disabled">Approve</button>

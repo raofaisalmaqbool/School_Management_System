@@ -10,7 +10,13 @@ def student_home(request):
 
 
 def studnet_apply_leave(request):
-    return render (request, 'student/student_leave_apply.html')
+    # showing the leave approved rejected or pandding
+    student = Student.objects.get(admin = request.user.id)
+    student_leave_history = Student_Leave.objects.filter(student_id=student)
+    context = {
+            'student_leave_history':student_leave_history
+        }
+    return render (request, 'student/student_leave_apply.html', context)
 
 
 def student_save_leave(request):

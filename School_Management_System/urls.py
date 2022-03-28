@@ -66,6 +66,8 @@ urlpatterns = [
     path('principal/teacher/disapprove_leave/<str:id>', principal_views.teacher_leave_disapprove, name='teacher_leave_disapprove'),
     
     path('principal/student/leave_view', principal_views.student_leave_view, name='student_leave_view'),
+    path('principal/student/approve_leave/<str:id>', principal_views.student_leave_approve, name='student_leave_approve'),
+    path('principal/student/disapprove_leave/<str:id>', principal_views.student_leave_disapprove, name='student_leave_disapprove'),
     
     path('student/home', students_views.student_home, name='student_home'),
     path('student/apply_leave', students_views.studnet_apply_leave, name='studnet_apply_leave'),

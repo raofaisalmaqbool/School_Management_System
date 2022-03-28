@@ -334,3 +334,17 @@ def student_leave_view(request):
         'student_leave' : student_leave
     }
     return render(request, 'principal/student_leave.html', context)
+
+
+def student_leave_approve(request, id):
+    leave = Student_Leave.objects.get(id = id)
+    leave.status = 1
+    leave.save()
+    return redirect('student_leave_view')
+    
+
+def student_leave_disapprove(requesst, id):
+    leave = Student_Leave.objects.get(id = id)
+    leave.status = 2
+    leave.save()
+    return redirect('student_leave_view')
