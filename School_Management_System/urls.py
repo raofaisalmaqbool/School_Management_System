@@ -65,7 +65,10 @@ urlpatterns = [
     path('principal/teacher/approve_leave/<str:id>', principal_views.teacher_leave_approve, name='teacher_leave_approve'),
     path('principal/teacher/disapprove_leave/<str:id>', principal_views.teacher_leave_disapprove, name='teacher_leave_disapprove'),
     
-    path('student/home', students_views.student_home, name='student_home')
+    path('student/home', students_views.student_home, name='student_home'),
+    path('student/apply_leave', students_views.studnet_apply_leave, name='studnet_apply_leave'),
+    path('teacher/save_leave', students_views.student_save_leave, name='student_save_leave'),
+
 
 
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

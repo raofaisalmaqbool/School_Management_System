@@ -91,3 +91,15 @@ class Teacher_leave(models.Model):
 
     def __str__(self):
         return self.teacher_id.admin.first_name + self.teacher_id.admin.last_name
+
+
+class Student_Leave(models.Model):
+    student_id = models.ForeignKey(Student, on_delete=models.CASCADE)
+    datee = models.CharField(max_length=80)
+    message = models.TextField()
+    status = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+    update_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.student_id.admin.first_name + self.student_id.admin.last_name
