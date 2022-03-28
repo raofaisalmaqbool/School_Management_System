@@ -3,7 +3,7 @@ from http.client import HTTPResponse
 from urllib import request
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from SMS.models import Course, Customuser, Session_Year, Student, Teacher, Teacher_Notification
+from SMS.models import Course, Customuser, Session_Year, Student, Teacher, Teacher_Notification,Teacher_leave
 from django.contrib import messages
 from SMS.models import Student
   
@@ -303,4 +303,14 @@ def save_teacher_notification(request):
         notifcation.save()
         messages.success(request, 'Your Notification Success Send')
     return redirect('teacher_send_notifiction')
+
+
+def teacher_leave_view(request): 
+    teacher_leave = Teacher_leave.objects.all()
+    context ={
+        'teacher_leave' : teacher_leave
+    }
+
+    return render(request, 'principal/teacher_leave.html', context)
+    #{% url 'teacher_leave_view' %}
     
