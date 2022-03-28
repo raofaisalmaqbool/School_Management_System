@@ -3,7 +3,7 @@ from http.client import HTTPResponse
 from urllib import request
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from SMS.models import Course, Customuser, Session_Year, Student, Teacher, Teacher_Notification,Teacher_leave
+from SMS.models import Course, Customuser, Session_Year, Student, Student_Leave, Teacher, Teacher_Notification,Teacher_leave
 from django.contrib import messages
 from SMS.models import Student
   
@@ -326,3 +326,11 @@ def teacher_leave_disapprove(requesst, id):
     leave.status = 2
     leave.save()
     return redirect('teacher_leave_view')
+
+
+def student_leave_view(request):
+    student_leave = Student_Leave.objects.all()
+    context = {
+        'student_leave' : student_leave
+    }
+    return render(request, 'principal/student_leave.html', context)
