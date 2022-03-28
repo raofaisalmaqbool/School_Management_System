@@ -310,7 +310,19 @@ def teacher_leave_view(request):
     context ={
         'teacher_leave' : teacher_leave
     }
-
     return render(request, 'principal/teacher_leave.html', context)
-    #{% url 'teacher_leave_view' %}
+
+
+
+def teacher_leave_approve(request, id):
+    leave = Teacher_leave.objects.get(id = id)
+    leave.status = 1
+    leave.save()
+    return redirect('teacher_leave_view')
     
+
+def teacher_leave_disapprove(requesst, id):
+    leave = Teacher_leave.objects.get(id = id)
+    leave.status = 2
+    leave.save()
+    return redirect('teacher_leave_view')
