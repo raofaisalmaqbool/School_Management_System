@@ -61,6 +61,8 @@ urlpatterns = [
     path('teacher/teacher_leave_apply', teacher_views.teacher_leave_apply, name='teacher_leave_apply'),
     path('teacher/teacher_leave_save', teacher_views.teacher_leave_save, name='teacher_leave_save'),
 
+    path('teacher/teacher_take_attendance', teacher_views.teacher_take_attendance, name='teacher_take_attendance'),
+
     path('principal/teacher/leave_view', principal_views.teacher_leave_view, name='teacher_leave_view'),
     path('principal/teacher/approve_leave/<str:id>', principal_views.teacher_leave_approve, name='teacher_leave_approve'),
     path('principal/teacher/disapprove_leave/<str:id>', principal_views.teacher_leave_disapprove, name='teacher_leave_disapprove'),

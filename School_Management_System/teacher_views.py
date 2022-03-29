@@ -1,7 +1,7 @@
 from pyexpat.errors import messages
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from SMS.models import Course, Session_Year, Teacher, Teacher_Notification, Teacher_leave
+from SMS.models import Course, Session_Year, Student, Teacher, Teacher_Notification, Teacher_leave
 
 def teacher_home(request):
     return render(request, 'teacher/teacher_home.html')
@@ -60,9 +60,32 @@ def teacher_take_attendance(request):
     course = Course.objects.filter(teacher = teacher_id )
     session_year = Session_Year.objects.all()
 
+    action = request.GET.get('action')
+
+    get_course = None
+    students = None
+    get_session_year = None
+
+    if action is not None:
+        if request.method == "POST":
+            course_id = request.POST.get('course_id')
+            session_year_id = request.POST.get('session_id')
+
+            get_course = Course.objects.get(id = course_id)
+            get_session_year = Session_Year.objects.get(id = session_year_id)
+
+            course = Course.objects.filter(id=course_id)
+            for i in course:
+                student_id = i.id
+                students = Student.objects.filter(course_id=student_id)
+
     context ={
         'course':course,
-        'session_year':session_year
+        'session_year':session_year,
+        'get_course':get_course,
+        'get_session_year':get_session_year,
+        'action':action,
+        'students':students,
     }
     return render(request, 'teacher/take_attendance.html', context)
 

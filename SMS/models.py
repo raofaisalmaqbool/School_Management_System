@@ -33,7 +33,19 @@ class Customuser(AbstractUser):
     profile_pic = models.ImageField(upload_to='media/profile_pic')
 
 
+class Teacher(models.Model):
+    admin = models.OneToOneField(Customuser, on_delete=models.CASCADE)
+    address = models.TextField()
+    gender = models.CharField(max_length=9)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.admin.username
+#teacher = models.ForeignKey(Teacher,default='1', on_delete=models.CASCADE)
+
 class Course(models.Model):
+    teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
     name = models.CharField(max_length=80)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
@@ -61,15 +73,7 @@ class Student(models.Model):
     def __str__(self):
         return self.admin.first_name + " " + self.admin.last_name
 
-class Teacher(models.Model):
-    admin = models.OneToOneField(Customuser, on_delete=models.CASCADE)
-    address = models.TextField()
-    gender = models.CharField(max_length=9)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
-        return self.admin.username
 
 class Teacher_Notification(models.Model):
     teacher_id = models.ForeignKey(Teacher, on_delete=models.CASCADE)
