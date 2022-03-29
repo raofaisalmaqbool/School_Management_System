@@ -1,7 +1,7 @@
 from pyexpat.errors import messages
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from SMS.models import Teacher, Teacher_Notification, Teacher_leave
+from SMS.models import Course, Session_Year, Teacher, Teacher_Notification, Teacher_leave
 
 def teacher_home(request):
     return render(request, 'teacher/teacher_home.html')
@@ -51,5 +51,19 @@ def teacher_leave_save(request):
         messages.success(request, 'Your Leave Submited Successful')
         
         return redirect('teacher_leave_apply')
+
+
+    
+
+def teacher_take_attendance(request):
+    teacher_id = Teacher.objects.get(admin = request.user.id)
+    course = Course.objects.filter(teacher = teacher_id )
+    session_year = Session_Year.objects.all()
+
+    context ={
+        'course':course,
+        'session_year':session_year
+    }
+    return render(request, 'teacher/take_attendance.html', context)
 
 
