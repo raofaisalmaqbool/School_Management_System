@@ -110,14 +110,14 @@ class Student_Leave(models.Model):
 
 
 class Attendance(models.Model):
-    course_id = models.ForeignKey(Course, on_delete=models.DO_NOTHING)
+    course_id = models.ForeignKey(Course, null=True, on_delete=models.DO_NOTHING)
     attendance_date = models.DateField()
     session_year_id = models.ForeignKey(Session_Year, on_delete=models.DO_NOTHING)
     created_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return self.subject_id.name
+        return self.course_id.name
 
 class Attendance_Report(models.Model):
     student_id = models.ForeignKey(Student, on_delete=models.DO_NOTHING)

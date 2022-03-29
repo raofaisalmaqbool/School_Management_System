@@ -62,7 +62,7 @@ urlpatterns = [
     path('teacher/teacher_leave_save', teacher_views.teacher_leave_save, name='teacher_leave_save'),
 
     path('teacher/teacher_take_attendance', teacher_views.teacher_take_attendance, name='teacher_take_attendance'),
-    path('teacher/teacher_save_attendance', teacher_views.Teacher_save_attendance, name='teacher_save_attendance'),
+    path('teacher/teacher_save_attendance', teacher_views.teacher_save_attendance, name='teacher_save_attendance'),
 
     path('principal/teacher/leave_view', principal_views.teacher_leave_view, name='teacher_leave_view'),
     path('principal/teacher/approve_leave/<str:id>', principal_views.teacher_leave_approve, name='teacher_leave_approve'),

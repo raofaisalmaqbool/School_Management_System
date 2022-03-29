@@ -91,7 +91,7 @@ def teacher_take_attendance(request):
 
 
 
-def Teacher_save_attendance(request):
+def teacher_save_attendance(request):
     if request.method == "POST":
         course_id = request.POST.get('course_id')
         session_year_id = request.POST.get('session_id')
@@ -117,8 +117,8 @@ def Teacher_save_attendance(request):
                 attendance_id = attendance,
             )
             attendance_report.save()
-    messages.success(request, 'Your Attendance Submited Successful')
+        messages.success(request, 'Your Attendance Submited Successful')
 
-    return redirect('teacher_save_attendance')
+    return redirect('teacher_take_attendance')
 
 
