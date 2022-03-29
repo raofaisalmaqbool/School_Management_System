@@ -2,11 +2,24 @@ from tkinter.messagebox import Message
 from pyexpat.errors import messages
 from django.contrib import messages
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 
-from SMS.models import Student, Student_Leave
+from SMS.models import Student, Student_Leave, Teacher, Course
 
+
+@login_required(login_url='/')
 def student_home(request):
-    return render(request, 'student/student_home.html')
+    teacher_count = Teacher.objects.all().count() # they will return total no of teachre, studnt ,courses
+    student_count = Student.objects.all().count()
+    course_count = Course.objects.all().count()
+
+    context ={
+        'teacher_count' : teacher_count,
+        'student_count' : student_count,
+        'course_count' : course_count
+    }
+    return render(request, 'student/student_home.html', context)
+    
 
 
 def studnet_apply_leave(request):

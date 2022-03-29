@@ -127,3 +127,16 @@ class Attendance_Report(models.Model):
 
     def __str__(self):
         return self.student_id.admin.first_name
+
+
+class Student_Result(models.Model):
+    student_id = models.ForeignKey(Student, on_delete=models.CASCADE)
+    course_id = models.ForeignKey(Course, on_delete=models.CASCADE)
+    assignment_marks = models.IntegerField()
+    presentation_marks = models.IntegerField()
+    exam_marks = models.IntegerField()
+    created_at = models.DateField(auto_now_add=True)
+    updated_at = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.student_id.admin.first_name

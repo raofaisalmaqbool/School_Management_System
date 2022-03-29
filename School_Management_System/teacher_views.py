@@ -1,10 +1,23 @@
 from pyexpat.errors import messages
 from django.contrib import messages
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from SMS.models import Course, Session_Year, Student, Attendance, Attendance_Report, Teacher, Teacher_Notification, Teacher_leave
 
+@login_required(login_url='/')
 def teacher_home(request):
-    return render(request, 'teacher/teacher_home.html')
+    teacher_count = Teacher.objects.all().count() # they will return total no of teachre, studnt ,courses
+    student_count = Student.objects.all().count()
+    course_count = Course.objects.all().count()
+
+    context ={
+        'teacher_count' : teacher_count,
+        'student_count' : student_count,
+        'course_count' : course_count
+    }
+    return render(request, 'teacher/teacher_home.html', context)
+
+    
 
 def notifications_tec(request):
     teacher = Teacher.objects.filter(admin = request.user.id)
