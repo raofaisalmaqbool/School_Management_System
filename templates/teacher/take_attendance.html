@@ -35,13 +35,13 @@
                 </div>
              </div>
                <div class="col-8">
-                  <button type="submit" class="btn btn-primary">Add Course</button>
+                  <button type="submit" class="btn btn-primary">Submit</button>
                </div>
             </form>
 
             {% else %}
 
-            <form method="post" action="?action=get_student" >
+            <form method="post" action="teacher_save_attendance" >
                {% csrf_token %}
                <div class="col-8">
                   <h1 class="form-title" style="margin-top:80px"><span>Take Attendance action=get_student</span></h1>
@@ -69,18 +69,18 @@
              </div>
              <div class="col-sm-6">
              <label>Attendance Date</label>
-                     <input type="date" class="form-control" name="name" value="{{course.name}}" required>
+                     <input type="date" class="form-control" name="attendance_date" value="{{course.name}}" required>
                   </div>
                   {% for i in students %}
                   <div class="form-check mt-4">
-                     <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                     <input class="form-check-input" name="student_id" type="checkbox" value="{{i.id}}" id="flexCheckChecked" checked>
                      <label class="form-check-label" for="flexCheckChecked">
                        {{i.admin.first_name}}{{i.admin.last_name}}
                      </label>
                    </div>
                    {% endfor %}
                      <div class="col-8 mt-4">
-                  <button type="submit" class="btn btn-primary">Add Course</button>
+                  <button type="submit" class="btn btn-primary">Submit</button>
                </div>
                
             </form>

@@ -110,7 +110,7 @@ class Student_Leave(models.Model):
 
 
 class Attendance(models.Model):
-    subject_id = models.ForeignKey(Course, on_delete=models.DO_NOTHING)
+    course_id = models.ForeignKey(Course, on_delete=models.DO_NOTHING)
     attendance_date = models.DateField()
     session_year_id = models.ForeignKey(Session_Year, on_delete=models.DO_NOTHING)
     created_at = models.DateTimeField(auto_now_add=True)

@@ -1,7 +1,7 @@
 from pyexpat.errors import messages
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from SMS.models import Course, Session_Year, Student, Teacher, Teacher_Notification, Teacher_leave
+from SMS.models import Course, Session_Year, Student, Attendance, Attendance_Report, Teacher, Teacher_Notification, Teacher_leave
 
 def teacher_home(request):
     return render(request, 'teacher/teacher_home.html')
@@ -88,5 +88,37 @@ def teacher_take_attendance(request):
         'students':students,
     }
     return render(request, 'teacher/take_attendance.html', context)
+
+
+
+def Teacher_save_attendance(request):
+    if request.method == "POST":
+        course_id = request.POST.get('course_id')
+        session_year_id = request.POST.get('session_id')
+        attendance_date = request.POST.get('attendance_date')
+        student_id = request.POST.getlist('student_id')
+
+        get_course = Course.objects.get(id = course_id)
+        get_session_year = Session_Year.objects.get(id = session_year_id)
+
+        attendance = Attendance(
+            course_id = get_course,
+            attendance_date = attendance_date,
+            session_year_id = get_session_year,
+        )
+        attendance.save()
+        for i in student_id:
+            stud_id = i
+            int_stud = int(stud_id)
+
+            p_students = Student.objects.get(id = int_stud)
+            attendance_report = Attendance_Report(
+                student_id= p_students,
+                attendance_id = attendance,
+            )
+            attendance_report.save()
+    messages.success(request, 'Your Attendance Submited Successful')
+
+    return redirect('teacher_save_attendance')
 
 
