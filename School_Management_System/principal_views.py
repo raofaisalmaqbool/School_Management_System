@@ -38,6 +38,27 @@ def add_student(request):
         course_id = request.POST.get('course_id')
         session_year_id = request.POST.get('session_year_id')
 
+        #validation for empty first_name
+        if not first_name:
+            messages.warning(request,'please enter first name')
+            return redirect('add_student')
+
+        # validation for correct enter first_name
+        if not first_name.isalpha():
+            messages.warning(request,'please correct enter first name')
+            return redirect('add_student')
+        
+        #validation for empty last_name
+        if not last_name:
+            messages.warning(request,'please enter first name')
+            return redirect('add_student')
+
+        # validation for correct enter last_name
+        if not last_name.isalpha():
+            messages.warning(request,'please correct enter first name')
+            return redirect('add_student')
+
+        
         if Customuser.objects.filter(email=email).exists():
            messages.warning(request,'Email Is Already Taken')
            return redirect('add_student')

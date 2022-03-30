@@ -17,7 +17,7 @@ def teacher_home(request):
     }
     return render(request, 'teacher/teacher_home.html', context)
 
-    
+
 
 def notifications_tec(request):
     teacher = Teacher.objects.filter(admin = request.user.id)
@@ -133,5 +133,10 @@ def teacher_save_attendance(request):
         messages.success(request, 'Your Attendance Submited Successful')
 
     return redirect('teacher_take_attendance')
+
+
+
+def teacher_view_attendance(request):
+    return render(request, 'teacher/view_attendance.html')
 
 
