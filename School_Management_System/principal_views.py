@@ -58,13 +58,16 @@ def add_student(request):
             messages.warning(request,'please correct enter first name')
             return redirect('add_student')
 
-        
+        # validation for unique email
         if Customuser.objects.filter(email=email).exists():
            messages.warning(request,'Email Is Already Taken')
            return redirect('add_student')
+
+        # validation for unique username
         if Customuser.objects.filter(username=username).exists():
            messages.warning(request,'Username Is Already Taken')
            return redirect('add_student')
+
         else:
             user = Customuser(
                 first_name = first_name,
@@ -247,6 +250,7 @@ def add_teacher(request):
         if Customuser.objects.filter(email=email).exists():
            messages.warning(request,'Email Is Already Taken')
            return redirect('add_teacher')
+           
         if Customuser.objects.filter(username=username).exists():
            messages.warning(request,'Username Is Already Taken')
            return redirect('add_teacher')

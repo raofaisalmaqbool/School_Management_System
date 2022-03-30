@@ -11,13 +11,6 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-class Teachers(models.Model):
-    ID = models.IntegerField(primary_key=True)
-    Name = models.CharField(max_length=50)
-    Address= models.CharField(max_length=50)
-    Email=models.EmailField(max_length=54)
-    Phone_No= models.CharField(max_length=80)
-
 class Claass(models.Model):
     ID = models.IntegerField(primary_key=True)
     Name = models.CharField(max_length=50)
