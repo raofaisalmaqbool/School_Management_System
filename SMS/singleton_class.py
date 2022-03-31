@@ -1,10 +1,12 @@
-from ast import IsNot
+
 import email
 from django.db import models
 import re
 
 
 # class Form_Validation():
+from SMS.models import Course, Customuser, Session_Year, Student, Student_Leave, Teacher, Teacher_Notification, Teacher_leave
+
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from urllib import request
@@ -67,27 +69,16 @@ def validations(profile_pic, first_name, last_name, email, username):
     if exa in pic_name or exb in pic_name:
         pass
     else:
-        d['e7'] = "invalid image not PNG pic"
+        d['e7'] = "invalid image not PNG or JPG"
 
 
 
-    # if regex not in email:
-    #     d['e5'] = "invalid email"
+    if Customuser.objects.filter(username=username).exists():
+        d['e8'] = "username Is Already Taken"
 
+    if Customuser.objects.filter(email=email).exists():
+        d['e9'] = "Email Is Already Taken"
 
-# Define a function for
-# for validating an Email
-
-    # def check(email):
-
-        # # pass the regular expression
-        # # and the string into the fullmatch() method
-        #     if(re.fullmatch(regex, email)):
-        # 	    pass
-
-        #     else:
-
-    # check(email)
 
     # if Customuser.objects.filter(email=email).exists():
     #     d['e6'] = "Email Is Already Taken"
