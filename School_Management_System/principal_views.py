@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from SMS.models import Course, Customuser, Session_Year, Student, Student_Leave, Teacher, Teacher_Notification,Teacher_leave
 from django.contrib import messages
 from SMS.models import Student
+from SMS.singleton_class import validations
   
 @login_required(login_url='/')
 def principal_home(request):
@@ -28,6 +29,7 @@ def add_student(request):
 
     if request.method == "POST":
         profile_pic = request.FILES.get('profile_pic')
+        print(profile_pic)
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
         email = request.POST.get('email')
@@ -38,35 +40,59 @@ def add_student(request):
         course_id = request.POST.get('course_id')
         session_year_id = request.POST.get('session_year_id')
 
+        # p_pic = profile_pic.split(".")[-1]
+        # if p_pic == "zip":
+            # mgk
         #validation for empty first_name
-        if not first_name:
-            messages.warning(request,'please enter first name')
-            return redirect('add_student')
-
-        # validation for correct enter first_name
-        if not first_name.isalpha():
-            messages.warning(request,'please correct enter first name')
-            return redirect('add_student')
+        x = 0
+        d = validations(profile_pic, first_name)
+        for i in d.values():
+            messages.warning(request,i)
+            x=x+1
         
-        #validation for empty last_name
-        if not last_name:
-            messages.warning(request,'please enter first name')
+        if x!=0:
             return redirect('add_student')
 
-        # validation for correct enter last_name
-        if not last_name.isalpha():
-            messages.warning(request,'please correct enter first name')
-            return redirect('add_student')
+        # print(n)
+        
+        # num = 0
+        # if not first_name:
+        #     messages.warning(request,'please enter first name')
+        #     #return redirect('add_student')
+        #     num = num+1
 
-        # validation for unique email
+        # # validation for correct enter first_name
+        # if not first_name.isalpha() and first_name!="":
+        #     messages.warning(request,'please correct enter first name')
+        #     #return redirect('add_student')
+        #     num = num+1
+        
+        # #validation for empty last_name
+        # if not last_name:
+        #     messages.warning(request,'please enter last name')
+        #     #return redirect('add_student')
+        #     num = num+1
+
+        # # validation for correct enter last_name
+        # if not last_name.isalpha():
+        #     messages.warning(request,'please correct enter last name')
+        #     #return redirect('add_student')
+        #     num = num+1
+
+        # # validation for unique email
         if Customuser.objects.filter(email=email).exists():
            messages.warning(request,'Email Is Already Taken')
-           return redirect('add_student')
+           #return redirect('add_student')
+        #    num = num+1
 
-        # validation for unique username
+        # # validation for unique username
         if Customuser.objects.filter(username=username).exists():
            messages.warning(request,'Username Is Already Taken')
-           return redirect('add_student')
+           #return redirect('add_student')
+        #    num = num+1
+
+        # if num != 0:
+        #     return redirect('add_student')
 
         else:
             user = Customuser(
