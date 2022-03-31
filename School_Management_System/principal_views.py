@@ -47,8 +47,8 @@ def add_student(request):
         # mgk
         # validation for empty first_name
         x = 0
-        d = validations(profile_pic, first_name, last_name, email, username)
-        for i in d.values():
+        ver = validations(profile_pic, first_name, last_name, email, username)
+        for i in ver.values():
             messages.warning(request, i)
             x = x+1
 
