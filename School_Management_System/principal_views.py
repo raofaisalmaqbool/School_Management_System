@@ -286,12 +286,20 @@ def add_teacher(request):
         address = request.POST.get('address')
         gender = request.POST.get('gender')
 
-        if Customuser.objects.filter(email=email).exists():
-            messages.warning(request, 'Email Is Already Taken')
-            return redirect('add_teacher')
+        # if Customuser.objects.filter(email=email).exists():
+        #     messages.warning(request, 'Email Is Already Taken')
+        #     return redirect('add_teacher')
 
-        if Customuser.objects.filter(username=username).exists():
-            messages.warning(request, 'Username Is Already Taken')
+        # if Customuser.objects.filter(username=username).exists():
+        #     messages.warning(request, 'Username Is Already Taken')
+        #     return redirect('add_teacher')
+        x = 0
+        ver = validations(profile_pic, first_name, last_name, email, username)
+        for i in ver.values():
+            messages.warning(request, i)
+            x = x+1
+
+        if x != 0:
             return redirect('add_teacher')
 
         else:
