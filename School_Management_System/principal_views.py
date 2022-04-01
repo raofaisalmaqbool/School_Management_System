@@ -84,21 +84,13 @@ def add_student(request):
         # # validation for unique email
         # if Customuser.objects.filter(email=email).exists():
         #     messages.warning(request, 'Email Is Already Taken')
-<<<<<<< HEAD
-        #     return redirect('add_student')
-=======
             # return redirect('add_student')
->>>>>>> 1ba49926c33524d318d1d6c0e3b28a2fafadb2de
         #    num = num+1
 
         # # validation for unique username
         # if Customuser.objects.filter(username=username).exists():
         #     messages.warning(request, 'Username Is Already Taken')
-<<<<<<< HEAD
         #     return redirect('add_student')
-=======
-            # return redirect('add_student')
->>>>>>> 1ba49926c33524d318d1d6c0e3b28a2fafadb2de
         #    num = num+1
 
         # if num != 0:
