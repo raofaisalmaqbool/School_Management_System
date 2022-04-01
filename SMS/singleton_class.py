@@ -4,7 +4,11 @@ from django.db import models
 import re
 
 
+<<<<<<< HEAD
 # # class Form_Validation():
+=======
+# class Form_Validation():
+>>>>>>> 1ba49926c33524d318d1d6c0e3b28a2fafadb2de
 from SMS.models import Course, Customuser, Session_Year, Student, Student_Leave, Teacher, Teacher_Notification, Teacher_leave
 
 from django.contrib import messages
@@ -16,6 +20,7 @@ from SMS.models import Customuser
 
 def validations(profile_pic, first_name, last_name, email, username):
     d = {}
+<<<<<<< HEAD
 #     # validation for empty first_name
 #     # num = 0
     if not first_name:
@@ -48,6 +53,40 @@ def validations(profile_pic, first_name, last_name, email, username):
 #         # num = num+1
         d['e4'] = "please enter correct last name"
 #         # d['num'] = d['num'] + 1
+=======
+    # validation for empty first_name
+    # num = 0
+    if not first_name:
+        # messages.warning(request, 'please enter first name')
+        # return redirect('add_student')
+        d['e1'] = "please enter first name"
+        # d['num'] = d['num'] + 1
+        # num = num+1
+
+    # validation for correct enter first_name
+    if not first_name.isalpha() and first_name != "":
+        # messages.warning(request, 'please correct enter first name')
+        # return redirect('add_student')
+        # num = num+1
+        d['e2'] = "please enter correct first name"
+        # d['num'] = d['num'] + 1
+
+    # validation for empty last_name
+    if not last_name:
+        # messages.warning(request, 'please enter first name')
+        # return redirect('add_student')
+        d['e3'] = "please enter last name"
+        # d['num'] = d['num'] + 1
+        # num = num+1
+
+    # validation for correct enter last_name
+    if not last_name.isalpha() and last_name != "":
+        # messages.warning(request, 'please correct enter first name')
+        # return redirect('add_student')
+        # num = num+1
+        d['e4'] = "please enter correct last name"
+        # d['num'] = d['num'] + 1
+>>>>>>> 1ba49926c33524d318d1d6c0e3b28a2fafadb2de
 
     regex = '''!#$%&'() *+,-"/:;<=>?[\]^_`{|}~'''
     abc = str(email)
@@ -81,6 +120,7 @@ def validations(profile_pic, first_name, last_name, email, username):
         d['e9'] = "Email Is Already Taken"
 
 
+<<<<<<< HEAD
 #     # if Customuser.objects.filter(email=email).exists():
 #     #     d['e6'] = "Email Is Already Taken"
 #         # messages.warning(request, 'Email Is Already Taken')
@@ -89,5 +129,15 @@ def validations(profile_pic, first_name, last_name, email, username):
 #     # email2 = email.split("@")[-1]
 #     # if not email1.isalnum():
 #     #     d['e5'] = "only google gmail is allowed"
+=======
+    # if Customuser.objects.filter(email=email).exists():
+    #     d['e6'] = "Email Is Already Taken"
+        # messages.warning(request, 'Email Is Already Taken')
+
+    # email1 = email.split("@")[0]
+    # email2 = email.split("@")[-1]
+    # if not email1.isalnum():
+    #     d['e5'] = "only google gmail is allowed"
+>>>>>>> 1ba49926c33524d318d1d6c0e3b28a2fafadb2de
 
     return d
