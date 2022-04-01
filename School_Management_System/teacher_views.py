@@ -146,6 +146,7 @@ def teacher_view_attendance(request):
     get_course=None
     get_session_year=None
     attendance_date=None
+    attendance_report=None
 
     if action is not None:
         if request.method == "POST":
@@ -155,6 +156,11 @@ def teacher_view_attendance(request):
 
             get_course = Course.objects.get(id=course_id)
             get_session_year = Session_Year.objects.get(id = session_year_id)
+            attendance = Attendance.objects.filter(course_id=get_course, attendance_date=attendance_date)
+
+            for i in attendance:
+                attendance_id=i.id
+                attendance_report=Attendance_Report.objects.filter(attendance_id=attendance_id)
 
     context = {
         'course' : course,
@@ -162,7 +168,8 @@ def teacher_view_attendance(request):
         'action':action,
         'get_course':get_course,
         'get_session_year':get_session_year,
-        'attendance_date':attendance_date
+        'attendance_date':attendance_date,
+        'attendance_report':attendance_report
     }
     return render(request, 'teacher/view_attendance.html', context)
 

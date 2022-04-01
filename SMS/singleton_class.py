@@ -15,7 +15,7 @@ from urllib import request
 from SMS.models import Customuser
 
 
-def validations(profile_pic, first_name, last_name, email, username):
+def validations(profile_pic, first_name, last_name, email, gender, username):
     d = {}
 #     # validation for empty first_name
 #     # num = 0
@@ -109,6 +109,9 @@ def validations(profile_pic, first_name, last_name, email, username):
     else:
         d['e7'] = "invalid image not PNG or JPG"
 
+    
+    if not gender:
+        d['e10'] = "please enter Gender"
 
 
     if Customuser.objects.filter(username=username).exists():
