@@ -12,18 +12,22 @@ def base(request):
     return render(request, 'base.html')
 
 def login(request):
+    print("in login function views.py")
     return render(request, 'login.html')
 
 def doLogout(request):
+    print("in dologout function views.py")
     logout(request)
     return render(request, 'login.html')
 
 def doLogin(request):
+    print("in dologin function views.py")
     if request.method == "POST":
        user = EmailBackend.authenticate(request,
                                         username=request.POST.get('email'),
                                         password=request.POST.get('password'),)
        if user!=None:
+           print("in dologin function views.py",user.user_type)
            logino(request,user)
            user_type = user.user_type
            if user_type == '1':
