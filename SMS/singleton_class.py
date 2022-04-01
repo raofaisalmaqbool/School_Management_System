@@ -95,13 +95,17 @@ def validations(profile_pic, first_name, last_name, email, username):
     exa = ".png"
     exb = ".jpg"
 
-    # ab =""
+    ab =""
     # print(pic_name)
-    # for i in pic_name[-4::1]:
-    #     ab = ab.append(i)
-    if exa in pic_name or exb in pic_name or pic_name=="None": #profile_pic == None
+    for i in pic_name[-4::1]:
+        ab = ab+i
+    # if exa in pic_name or exb in pic_name or pic_name=="None": #profile_pic == None
         # print(pic_name)
+        # pass
+    if ab==exa or ab==exb:
         pass
+    elif pic_name=="None":
+        d['e7'] = "please enter image"
     else:
         d['e7'] = "invalid image not PNG or JPG"
 

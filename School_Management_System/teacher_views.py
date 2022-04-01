@@ -137,6 +137,33 @@ def teacher_save_attendance(request):
 
 
 def teacher_view_attendance(request):
-    return render(request, 'teacher/view_attendance.html')
+    teacher_id = Teacher.objects.get(admin=request.user.id)
+    course = Course.objects.filter(teacher_id = teacher_id)
+    session_year = Session_Year.objects.all()
+
+    action = request.GET.get('action')
+
+    get_course=None
+    get_session_year=None
+    attendance_date=None
+
+    if action is not None:
+        if request.method == "POST":
+            course_id = request.POST.get('course_id')
+            session_year_id = request.POST.get('session_id')
+            attendance_date = request.POST.get('attendance_date')
+
+            get_course = Course.objects.get(id=course_id)
+            get_session_year = Session_Year.objects.get(id = session_year_id)
+
+    context = {
+        'course' : course,
+        'session_year':session_year,
+        'action':action,
+        'get_course':get_course,
+        'get_session_year':get_session_year,
+        'attendance_date':attendance_date
+    }
+    return render(request, 'teacher/view_attendance.html', context)
 
 
