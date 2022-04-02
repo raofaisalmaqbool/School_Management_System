@@ -223,7 +223,9 @@ def add_course(request):
 
         course = Course(
             name=course_name,
+    #data base colom name = variable name
         )
+        print(teacher_id)
         course.save()
         messages.success(request, 'Course Are Successfully Created ')
 
@@ -293,14 +295,19 @@ def add_teacher(request):
         # if Customuser.objects.filter(username=username).exists():
         #     messages.warning(request, 'Username Is Already Taken')
         #     return redirect('add_teacher')
+        
         x = 0
         ver = validations(profile_pic, first_name, last_name, email, gender, username)
         for i in ver.values():
             messages.warning(request, i)
             x = x+1
 
+        context={
+            'first_name':first_name
+        }
+
         if x != 0:
-            return redirect('add_teacher')
+            return render(request, "principal/add_teacher.html", context)
 
         else:
             user = Customuser(
@@ -323,7 +330,8 @@ def add_teacher(request):
             teacher.save()
             messages.success(request, user.first_name + "  " +
                              user.last_name + " Teacher is Successfully Added !")
-            return redirect('add_teacher')
+            # return redirect('add_teacher')
+            return render(request, "principal/add_teacher.html", context)
 
     return render(request, "principal/add_teacher.html")
 
