@@ -17,7 +17,7 @@ Including another URLconf
 from xml.dom.minidom import Document
 from django.contrib import admin
 from django.urls import path
-from SMS import views
+from LMS import views
 from django.conf import settings
 from django.conf.urls.static import static
 from.import principal_views, teacher_views, students_views

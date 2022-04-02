@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
-from SMS.models import Student, Student_Leave, Teacher, Course
+from LMS.models import Student, Student_Leave, Teacher, Course
 
 
 @login_required(login_url='/')

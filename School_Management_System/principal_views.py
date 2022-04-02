@@ -3,10 +3,10 @@ from http.client import HTTPResponse
 from urllib import request
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from SMS.models import Course, Customuser, Session_Year, Student, Student_Leave, Teacher, Teacher_Notification, Teacher_leave
+from LMS.models import Course, Customuser, Session_Year, Student, Student_Leave, Teacher, Teacher_Notification, Teacher_leave
 from django.contrib import messages
-from SMS.models import Student
-from SMS.singleton_class import validations
+from LMS.models import Student
+from LMS.singleton_class import validations
 
 
 @login_required(login_url='/')
@@ -294,7 +294,7 @@ def add_teacher(request):
         #     messages.warning(request, 'Username Is Already Taken')
         #     return redirect('add_teacher')
         x = 0
-        ver = validations(profile_pic, first_name, last_name, email, username)
+        ver = validations(profile_pic, first_name, last_name, email, gender, username)
         for i in ver.values():
             messages.warning(request, i)
             x = x+1
