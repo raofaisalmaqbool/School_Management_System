@@ -6,7 +6,8 @@ from django.contrib.auth.decorators import login_required
 from LMS.models import Course, Customuser, Session_Year, Student, Student_Leave, Teacher, Teacher_Notification, Teacher_leave
 from django.contrib import messages
 from LMS.models import Student
-from LMS.singleton_class import validations
+# from LMS.singleton_class import validations
+from LMS.validations import Validation
 
 
 @login_required(login_url='/')
@@ -46,14 +47,15 @@ def add_student(request):
         # if p_pic == "zip":
         # mgk
         # validation for empty first_name
-        x = 0
-        ver = validations(profile_pic, first_name, last_name, email, username, gender)
-        for i in ver.values():
-            messages.warning(request, i)
-            x = x+1
 
-        if x != 0:
-            return redirect('add_student')
+        # x = 0
+        # ver = validations(profile_pic, first_name, last_name, email, username, gender)
+        # for i in ver.values():
+        #     messages.warning(request, i)
+        #     x = x+1
+
+        # if x != 0:
+        #     return redirect('add_student')
 
         # print(n)
 
@@ -82,15 +84,15 @@ def add_student(request):
         #     num = num+1
 
         # # validation for unique email
-        # if Customuser.objects.filter(email=email).exists():
-        #     messages.warning(request, 'Email Is Already Taken')
-            # return redirect('add_student')
+        if Customuser.objects.filter(email=email).exists():
+            messages.warning(request, 'Email Is Already Taken')
+            return redirect('add_student')
         #    num = num+1
 
         # # validation for unique username
-        # if Customuser.objects.filter(username=username).exists():
-        #     messages.warning(request, 'Username Is Already Taken')
-        #     return redirect('add_student')
+        if Customuser.objects.filter(username=username).exists():
+            messages.warning(request, 'Username Is Already Taken')
+            return redirect('add_student')
         #    num = num+1
 
         # if num != 0:
@@ -225,7 +227,7 @@ def add_course(request):
             name=course_name,
     #data base colom name = variable name
         )
-        print(teacher_id)
+        #print(teacher_id)
         course.save()
         messages.success(request, 'Course Are Successfully Created ')
 
@@ -288,26 +290,45 @@ def add_teacher(request):
         address = request.POST.get('address')
         gender = request.POST.get('gender')
 
-        # if Customuser.objects.filter(email=email).exists():
-        #     messages.warning(request, 'Email Is Already Taken')
-        #     return redirect('add_teacher')
+        # print(last_name)
+        # print(first_name)
 
-        # if Customuser.objects.filter(username=username).exists():
-        #     messages.warning(request, 'Username Is Already Taken')
-        #     return redirect('add_teacher')
-        
         x = 0
-        ver = validations(profile_pic, first_name, last_name, email, gender, username)
-        for i in ver.values():
-            messages.warning(request, i)
-            x = x+1
+        vera = Validation.f_name(first_name)
+        for i in vera.values():
+             messages.warning(request, i)
+             x = x+1
 
-        context={
-            'first_name':first_name
-        }
+        verb = Validation.l_name(last_name)
+        for i in verb.values():
+             messages.warning(request, i)
+             x = x+1
 
         if x != 0:
-            return render(request, "principal/add_teacher.html", context)
+             return render(request, "principal/add_teacher.html")
+
+
+        if Customuser.objects.filter(email=email).exists():
+            messages.warning(request, 'Email Is Already Taken')
+            return redirect('add_teacher')
+
+        if Customuser.objects.filter(username=username).exists():
+            messages.warning(request, 'Username Is Already Taken')
+            return redirect('add_teacher')
+        
+        # x = 0
+        # ver = validations(profile_pic, first_name, last_name, email, gender, username)
+        # for i in ver.values():
+        #     messages.warning(request, i)
+        #     x = x+1
+
+        # context={
+        #     'first_name':first_name
+        # }
+
+        # if x != 0:
+        #     return render(request, "principal/add_teacher.html", context)
+
 
         else:
             user = Customuser(
