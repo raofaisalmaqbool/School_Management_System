@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login as logino, logout
 from django.contrib import messages
 from LMS.models import Customuser
 from django.contrib.auth.decorators import login_required
+from .forms import CustomForm
 # Create your views here.
 def index(request):
     return render(request,'index.html')
@@ -80,3 +81,13 @@ def profile_update(request):
             messages.error(request,'Failed To Update Your Profile')
 
     return render(request,'profile.html')
+
+
+
+def test_form(request):
+    if request.method == "POST":
+        Cfor = CustomForm(request.POST)
+        if Cfor.is_valid:
+            print('name :', Cfor.clened_data['name'])
+            print('email:', Cfor.clened_data['email'])
+        return render(request, 'test_form.html', {'testform':Cfor})

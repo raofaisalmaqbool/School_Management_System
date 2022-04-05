@@ -11,7 +11,7 @@ from django.contrib import messages
 from django.shortcuts import render, redirect
 from urllib import request
 from LMS.models import Customuser
-from School_Management_System.principal_views import add_teacher
+
 
 d = {}
 class Validation:

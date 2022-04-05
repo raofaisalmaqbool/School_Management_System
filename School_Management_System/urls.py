@@ -33,6 +33,8 @@ urlpatterns = [
     path('profile/', views.profile, name="profile"),
     path('profile/update', views.profile_update, name='profile_update'),
 
+    path('test_form/', views.test_form, name="test_form"),
+
     path('principal/principal_home/', principal_views.principal_home, name='principal_home'),  #principal home page
     
     path('principal/student/add',principal_views.add_student, name='add_student'),
