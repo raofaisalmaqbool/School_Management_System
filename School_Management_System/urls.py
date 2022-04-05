@@ -53,7 +53,7 @@ urlpatterns = [
     path('principal/teacher/delete/<str:admin>',principal_views.delete_teacher,name='delete_teacher'),
     path('principal/teacher/send_notification', principal_views.teacher_send_notifiction, name="teacher_send_notifiction"),
     path('principal/teacher/save_notification', principal_views.save_teacher_notification, name='save_teacher_notification'),
-
+                                      # action lisner
     path('teacher/home', teacher_views.teacher_home, name='teacher_home'),
     path('teacher/notifications', teacher_views.notifications_tec, name='notifications_tec'),
     path('teacher/status_mark/<str:status>', teacher_views.status_mark, name='status_mark'),

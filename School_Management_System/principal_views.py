@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from LMS.models import Course, Customuser, Session_Year, Student, Student_Leave, Teacher, Teacher_Notification, Teacher_leave
 from django.contrib import messages
 from LMS.models import Student
-# from LMS.singleton_class import validations
+from LMS.singleton_class import validations
 from LMS.validations import Validation
 
 
@@ -285,6 +285,7 @@ def add_teacher(request):
         first_name = request.POST.get('first_name')     # in the variable
         last_name = request.POST.get('last_name')
         email = request.POST.get('email')
+
         username = request.POST.get('username')
         password = request.POST.get('password')
         address = request.POST.get('address')
@@ -293,19 +294,19 @@ def add_teacher(request):
         # print(last_name)
         # print(first_name)
 
-        x = 0
-        vera = Validation.f_name(first_name)
-        for i in vera.values():
-             messages.warning(request, i)
-             x = x+1
+        # x = 0
+        # vera = Validation.f_name(first_name)
+        # for i in vera.values():
+        #      messages.warning(request, i)
+        #      x = x+1
 
-        verb = Validation.l_name(last_name)
-        for i in verb.values():
-             messages.warning(request, i)
-             x = x+1
+        # verb = Validation.l_name(last_name)
+        # for i in verb.values():
+        #      messages.warning(request, i)
+        #      x = x+1
 
-        if x != 0:
-             return render(request, "principal/add_teacher.html")
+        # if x != 0:
+        #      return render(request, "principal/add_teacher.html")
 
 
         if Customuser.objects.filter(email=email).exists():
@@ -336,6 +337,7 @@ def add_teacher(request):
                 last_name=last_name,
                 username=username,
                 email=email,
+                
                 profile_pic=profile_pic,
                 user_type=2
             )
@@ -352,7 +354,7 @@ def add_teacher(request):
             messages.success(request, user.first_name + "  " +
                              user.last_name + " Teacher is Successfully Added !")
             # return redirect('add_teacher')
-            return render(request, "principal/add_teacher.html", context)
+            return render(request, "principal/add_teacher.html")
 
     return render(request, "principal/add_teacher.html")
 
