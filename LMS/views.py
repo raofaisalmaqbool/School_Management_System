@@ -85,20 +85,18 @@ def profile_update(request):
 
 
 def test_form(request):
-    
     if request.method == "POST":
         Cfor = CustomForm(request.POST)
         print(Cfor)
         print("post request")
-        if Cfor.is_valid:
+        if Cfor.is_valid():
             print("if data validate")
-            name = Cfor.cleaned_data['name']      # not valid mathod for get data, ya cleanded data ni dy ga
+            name = request.POST['name']      # not valid mathod for get data, ya cleanded data ni dy ga
             email = Cfor.cleaned_data['email']   # valid method , cleand data dy ga
             password = Cfor.cleaned_data['password']
             print('name :', name)
             print('email :', email)
             print('password :', password)
-            
         
     else:
         Cfor = CustomForm()
