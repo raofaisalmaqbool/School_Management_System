@@ -85,9 +85,15 @@ def profile_update(request):
 
 
 def test_form(request):
+    
     if request.method == "POST":
         Cfor = CustomForm(request.POST)
-        if Cfor.is_valid:
-            print('name :', Cfor.clened_data['name'])
-            print('email:', Cfor.clened_data['email'])
-        return render(request, 'test_form.html', {'testform':Cfor})
+        print(Cfor)
+        print("post request")
+        print('name :', Cfor.cleaned_data['name'])
+        print('email :', Cfor.cleaned_data['email'])
+        
+    else:
+        Cfor = CustomForm()
+        print("get request")
+    return render(request, 'test_form.html', {'testform':Cfor})
