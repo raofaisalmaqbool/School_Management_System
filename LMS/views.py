@@ -90,8 +90,15 @@ def test_form(request):
         Cfor = CustomForm(request.POST)
         print(Cfor)
         print("post request")
-        print('name :', Cfor.cleaned_data['name'])
-        print('email :', Cfor.cleaned_data['email'])
+        if Cfor.is_valid:
+            print("if data validate")
+            name = Cfor.cleaned_data['name']      # not valid mathod for get data, ya cleanded data ni dy ga
+            email = Cfor.cleaned_data['email']   # valid method , cleand data dy ga
+            password = Cfor.cleaned_data['password']
+            print('name :', name)
+            print('email :', email)
+            print('password :', password)
+            
         
     else:
         Cfor = CustomForm()

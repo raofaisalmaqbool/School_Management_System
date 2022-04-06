@@ -7,13 +7,13 @@
    <div class="card">
       <div class="card-body">
          
-         <form method="post" style="margin-top:70px">
+         <form method="post" style="margin-top:70px" novalidate>
             {% csrf_token %}
             <div class="col-6">
                <h5 class="form-title"><span>Add Teacher</span></h5>
             </div>
 
-            {{testform}}
+            {{testform.as_p}}
                
                
                
