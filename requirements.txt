@@ -1,0 +1,5 @@
+Django==3.2.9
+mysqlclient==2.1.1
+Pillow==9.3.0
+django-active-link==0.1.8
+python-decouple==3.8
